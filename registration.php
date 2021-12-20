@@ -17,7 +17,6 @@
         '$address',
         '$telephone',
         '$gender')";
-        echo $sql;
         if (!$conn -> query($sql)) {
             echo("Error description: " . $conn -> error);
           }
