@@ -1,6 +1,5 @@
 <?php
     $conn = new mysqli ("localhost", "root", "", "exam");
-
     if (isset($_POST['postBtn'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -9,17 +8,19 @@
         $address = $_POST['address'];
         $telephone = $_POST['telephone'];
         $gender = $_POST['gender'];
-
-        mysqli_query ($conn, 
-        "INSERT INTO user (username, password, firstname, lastname, address, telephone, gender) VALUES
-        $username, 
-        $password,
-        $firstname,
-        $lastname,
-        $address,
-        $telephone,
-        $gender"
-        );
+        
+        $sql = "INSERT INTO user (`username`, `password`, `firstname`, `lastname`, `address`, `telephone`, `gender`) VALUES (
+        '$username', 
+        '$password',
+        '$firstname',
+        '$lastname',
+        '$address',
+        '$telephone',
+        '$gender')";
+        echo $sql;
+        if (!$conn -> query($sql)) {
+            echo("Error description: " . $conn -> error);
+          }
     }
 
 
